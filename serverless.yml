@@ -1,0 +1,15 @@
+service: aws
+frameworkVersion: '3'
+provider:
+  name: aws
+  runtime: nodejs14.x
+functions:
+  app:
+    handler: aws/index.handler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: ANY
+
+plugins:
+  - serverless-offline
